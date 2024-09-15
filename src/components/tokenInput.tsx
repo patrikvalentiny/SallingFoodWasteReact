@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import storage from '../utils/storageService';
-import { StorageKey } from '../utils/storageService';
+import storageService, { StorageKey } from '../utils/storageService';
+import httpService from '../utils/httpService';
 
 const TokenInputComponent: React.FC = () => {
   const [tokenInput, setTokenInput] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean>(false);
-
+  const storage = storageService;
   useEffect(() => {
     const token = storage.getItem(StorageKey.TOKEN);
     setTokenInput(token);
@@ -20,6 +20,7 @@ const TokenInputComponent: React.FC = () => {
 
   const setToken = () => {
     if (tokenInput) {
+      httpService.setToken(tokenInput);
       storage.setItem(StorageKey.TOKEN, tokenInput);
     }
   };

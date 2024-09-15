@@ -15,6 +15,10 @@ class HttpService {
   getInstance(): AxiosInstance {
     return this.axiosInstance;
   }
+
+  setToken(token: string): void {
+    this.axiosInstance.defaults.headers['Authorization'] = `Bearer ${token}`;
+  }
 }
 
 const httpService = new HttpService();
