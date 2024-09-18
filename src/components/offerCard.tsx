@@ -22,7 +22,7 @@ const OfferCardComponent: React.FC<OfferCardComponentProps> = ({ clearance }) =>
       </figure>
       <div className="card-body items-center text-center">
         <h2 className="card-title">{clearance.product.description}</h2>
-        <p>{clearance.product.categories.en}</p>
+        <p>{clearance.product.categories.en ?? ""}</p>
         <div className="flex flex-row justify-between w-full">
           <div className="flex flex-col justify-center items-start">
             <p className="text-accent font-light">Offer End Date</p>

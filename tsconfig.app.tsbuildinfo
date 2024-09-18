@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts"],"version":"5.6.2"}
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/offercard.tsx","./src/components/storeclearances.tsx","./src/components/tokeninput.tsx","./src/models/clearance.ts","./src/models/foodwastebystore.ts","./src/models/store.ts","./src/utils/httpservice.ts","./src/utils/restservice.ts","./src/utils/storageservice.ts"],"version":"5.6.2"}
