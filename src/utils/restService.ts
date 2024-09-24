@@ -31,6 +31,11 @@ class RestService {
     const response = await this.http.get<{ clearances: Clearance[] }>(`/v1/food-waste/${storeId}`);
     return response.data.clearances;
   }
+
+  async getAllStores(): Promise<Store[]> {
+    const response = await this.http.get<Store[]>('/v2/stores/');
+    return response.data;
+  }
 }
 
 const restService = new RestService();

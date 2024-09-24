@@ -35,7 +35,7 @@ const StoreClearancesComponent: React.FC = () => {
   };
 
   const addStore = (name: string, id: string) => {
-    const newStore: Store = { name, id };
+    const newStore: Store = { name: name, id: id };
     const updatedStores = [...stores, newStore];
     setStores(updatedStores);
     storageService.setItem(StorageKey.STORES, JSON.stringify(updatedStores));
