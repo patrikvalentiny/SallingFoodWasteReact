@@ -1,18 +1,25 @@
 import StoreComponent from "../components/storeComponent"
 import restService from "../utils/restService"
 import { Store } from "../models/store"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import SearchStore from "../components/searchStore"
 
 const StorePage = () => {
     const [stores, setStores] = useState<Store[]>([])
-    async function getStore() {
+
+    useEffect(() => {
+        getStores()
+    }, [])
+
+    async function getStores() {
         setStores(await restService.getStores())
     }
     return (
         <div>
-            <button className="btn btn-primary" onClick={getStore}>Get Store</button>
+            <SearchStore setStores={setStores} />
+            {/* <button className="btn btn-primary" onClick={getStores}>Get Store</button> */}
             {stores.map((store) => (
-                <StoreComponent key={store.id} store={store} />
+            <StoreComponent key={store.id} store={store} />
             ))}
         </div>
     )
