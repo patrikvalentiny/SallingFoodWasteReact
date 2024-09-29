@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import restService from '../utils/restService';
+import { Store } from '../models/store';
 
-export default function SearchStore({ setStores }: { setStores: (stores: any[]) => void }) {
+export default function SearchStore({ setStores }: { setStores: (stores: Store[]) => void }) {
     const [query, setQuery] = useState('');
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -8,29 +10,27 @@ export default function SearchStore({ setStores }: { setStores: (stores: any[]) 
         setQuery(event.target.value);
     };
 
-    const handleSearch = (q: string) => {
+    const handleSearch = async (q: string) => {
         if (q.length < 3) {
             return;
         }
         const num = Number(q);
-        if (!isNaN(num)) {
-            console.log("Zip code");
-            // Perform search by zip code and update stores
-            setStores([]); // Replace with actual search result
+        if (!isNaN(num) && q.length === 4) {
+            const stores : Store[] = await restService.getStoreByZip(num);
+            setStores(stores);
         } else {
-            console.log("City name");
-            // Perform search by city name and update stores
-            setStores([]); // Replace with actual search result
+            const stores : Store[] = await restService.getStoreByCity(q);
+            setStores(stores);
         }
     };
 
     return (
-        <div className='p-4'>
+        <div className='p-2'>
             <label className="input input-bordered flex items-center gap-2">
                 <input
                     type="text"
                     className="grow"
-                    placeholder="Search by city or zip code"
+                    placeholder="Search by zip code or city"
                     value={query}
                     onChange={handleInputChange}
                 />

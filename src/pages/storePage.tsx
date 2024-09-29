@@ -15,11 +15,11 @@ const StorePage = () => {
         setStores(await restService.getStores())
     }
     return (
-        <div>
+        <div className="p-2">
             <SearchStore setStores={setStores} />
             {/* <button className="btn btn-primary" onClick={getStores}>Get Store</button> */}
             {stores.map((store) => (
-            <StoreComponent key={store.id} store={store} />
+                <StoreComponent key={store.id} store={store} />
             ))}
         </div>
     )
