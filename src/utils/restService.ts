@@ -31,6 +31,22 @@ class RestService {
     const response = await this.http.get<{ clearances: Clearance[] }>(`/v1/food-waste/${storeId}`);
     return response.data.clearances;
   }
+
+  async getAllStores(): Promise<Store[]> {
+    const response = await this.http.get<Store[]>('/v2/stores/');
+    return response.data;
+  }
+
+  async getStoreByZip(zip:number): Promise<Store[]> {
+    const response = await this.http.get<Store[]>(`/v2/stores/`, {params: {zip: zip, per_page:50}});
+    return response.data;
+  }
+
+  async getStoreByCity(city:string): Promise<Store[]> {
+    const response = await this.http.get<Store[]>(`/v2/stores/`, {params: {city: city, per_page:50}});
+    return response.data;
+  }
+
 }
 
 const restService = new RestService();
