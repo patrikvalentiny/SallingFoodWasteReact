@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import restService from '../utils/restService';
 import { Store } from '../models/store';
 
-export default function SearchStore({ setStores }: { setStores: (stores: Store[]) => void }) {
+export default function SearchStoreComponent({ setStores }: { setStores: (stores: Store[]) => void }) {
     const [query, setQuery] = useState('');
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,14 +18,14 @@ export default function SearchStore({ setStores }: { setStores: (stores: Store[]
         if (!isNaN(num) && q.length === 4) {
             const stores : Store[] = await restService.getStoreByZip(num);
             setStores(stores);
-        } else {
+        } else if  (isNaN(num)){
             const stores : Store[] = await restService.getStoreByCity(q);
             setStores(stores);
         }
     };
 
     return (
-        <div className='p-2'>
+        <div>
             <label className="input input-bordered flex items-center gap-2">
                 <input
                     type="text"
