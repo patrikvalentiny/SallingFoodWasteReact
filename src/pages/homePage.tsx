@@ -62,7 +62,7 @@ const HomePage: React.FC = () => {
                     <button>close</button>
                 </form> */}
             </dialog>
-            <div className="flex flex-row w-full justify-between p-2 gap-2 fixed top-0 left-0 h-auto z-10 bg-base-100 no-scrollbar">
+            <div className="flex flex-row w-screen justify-between p-2 gap-2 fixed top-0 left-0 h-auto z-10 bg-base-100 no-scrollbar">
 
                 <StoreSelectorComponent localStores={localStores} selectedStore={selectedStore} setSelectedStore={setSelectedStore} setClearances={setClearances}></StoreSelectorComponent>
                 <button className="btn" onClick={() => modal.showModal()}>+ Add Stores</button>

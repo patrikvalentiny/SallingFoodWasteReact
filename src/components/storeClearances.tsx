@@ -7,7 +7,7 @@ export default function StoreClearancesComponent({ clearances, } : { clearances:
 
   return (
     <div className="flex flex-col gap-4 p-2">
-      <div className="flex flex-row flex-wrap gap-4 pt-16 ">
+      <div className="flex flex-row flex-wrap gap-4 pt-16 items-stretch ">
         {clearances.map((clearance) => (
           <OfferCardComponent key={clearance.offer.ean} clearance={clearance} />
         ))}
